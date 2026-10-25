@@ -16,13 +16,6 @@ tmp/
 /build
 /dist
 
-# SQLite database files
-data/
-*.db
-*.db-journal
-*.db-shm
-*.db-wal
-
 # Media uploads and generated thumbnails/tiles
 media/
 
