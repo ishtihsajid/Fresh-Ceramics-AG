@@ -76,13 +76,13 @@ export function Chapter9Beyond({ locale = 'en', isTouch = false }: Chapter9Beyon
         start: 'top top',
         end: () => `+=${pinDistance()}`,
         pin: scene,
-        scrub: 1,
-        anticipatePin: 1,
+        scrub: 0.5,
+        anticipatePin: 0,
         onUpdate: (self) => {
           const progress = self.progress
           const idx = Math.min(
             INITIATIVES.length - 1,
-            Math.floor(progress * INITIATIVES.length)
+            Math.max(0, Math.round(progress * (INITIATIVES.length - 1)))
           )
           setActiveCardIdx(idx)
         },

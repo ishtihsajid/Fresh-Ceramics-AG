@@ -90,8 +90,8 @@ export function Chapter3Fire({ locale = 'en', isTouch = false }: Chapter3FirePro
         start: 'top top',
         end: () => `+=${pinDistance()}`,
         pin: scene,
-        scrub: 1,
-        anticipatePin: 1,
+        scrub: 0.5,
+        anticipatePin: 0,
         onUpdate: (self) => {
           const progress = self.progress
 
@@ -99,16 +99,20 @@ export function Chapter3Fire({ locale = 'en', isTouch = false }: Chapter3FirePro
           const stationIdx = Math.min(6, Math.max(0, Math.round(progress * 6)))
           setActiveStationIndex(stationIdx)
 
-          if (stationIdx < 5) {
+          // Station 6 mould = progress 5/6 ≈ 0.833 (Factory Lab Standards: 14 Global Tests)
+          // Station 7 mould = progress 6/6 = 1.000 (Finished Tile Precision: 98% Grade A)
+          if (progress < 4.5 / 6) {
             setTestCount(0)
             setGradeCount(0)
-          } else if (stationIdx === 5) {
-            const p6 = Math.max(0, Math.min(1, (progress - 0.75) / 0.10))
+          } else if (progress < 5.5 / 6) {
+            // Approaching Station 6 mould (5/6): testCount animates from 0 to 14, reaches 14 at 5/6
+            const p6 = Math.max(0, Math.min(1, (progress - 4.5 / 6) / (0.5 / 6)))
             setTestCount(Math.min(14, Math.round(p6 * 14)))
             setGradeCount(0)
           } else {
+            // Approaching Station 7 mould (6/6): testCount stays 14, gradeCount animates from 0 to 98%
             setTestCount(14)
-            const p7 = Math.max(0, Math.min(1, (progress - 0.90) / 0.10))
+            const p7 = Math.max(0, Math.min(1, (progress - 5.5 / 6) / (0.5 / 6)))
             setGradeCount(Math.min(98, Math.round(p7 * 98)))
           }
 
@@ -177,7 +181,7 @@ export function Chapter3Fire({ locale = 'en', isTouch = false }: Chapter3FirePro
         </div>
 
         {/* Middle Stage: Seven Quality Stations Scrub Display */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 my-auto items-center overflow-y-auto max-h-[calc(100dvh-13rem)] py-2 min-h-0">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 my-auto items-center overflow-hidden flex-1 min-h-0 py-2">
           {/* Left Column: Vertical Stations Track (Desktop) */}
           <div className="lg:col-span-6 space-y-2 sm:space-y-2.5">
             {STATIONS.map((st, idx) => {

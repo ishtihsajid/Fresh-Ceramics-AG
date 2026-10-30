@@ -101,7 +101,7 @@ export function Chapter6Reach({ locale = 'en', isTouch = false }: Chapter6ReachP
         </div>
 
         {/* Right Column: 3 Live Counters, Division Selector & Interactive Showroom Inspector */}
-        <div className="lg:col-span-5 flex flex-col justify-between space-y-3 overflow-y-auto">
+        <div className="lg:col-span-5 flex flex-col justify-between space-y-3 overflow-hidden min-h-0">
           {/* 3 Stats Counters */}
           <div className="grid grid-cols-3 gap-2 shrink-0">
             <div className="bg-[#222226] p-2.5 sm:p-3 border-l-2 border-fresh-red shadow-md">

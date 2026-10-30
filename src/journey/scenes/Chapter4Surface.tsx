@@ -164,8 +164,8 @@ export function Chapter4Surface({ locale = 'en', isTouch = false }: Chapter4Surf
           start: 'top top',
           end: () => `+=${pinDistance()}`,
           pin: scene,
-          scrub: 1,
-          anticipatePin: 1,
+          scrub: 0.5,
+          anticipatePin: 0,
         },
       })
 
@@ -173,7 +173,7 @@ export function Chapter4Surface({ locale = 'en', isTouch = false }: Chapter4Surf
       tl.fromTo(
         '.mosaic-card',
         { opacity: 0.6, y: 25 },
-        { opacity: 1, y: 0, stagger: 0.06, duration: 0.4, ease: 'power2.out' },
+        { opacity: 1, y: 0, stagger: 0.06, duration: 0.35, ease: 'power2.out' },
         0
       )
 
@@ -182,15 +182,15 @@ export function Chapter4Surface({ locale = 'en', isTouch = false }: Chapter4Surf
         '.dc-banner',
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' },
-        0.4
+        0.35
       )
 
-      // Door row reveal
+      // Door row reveal (finishes before 1.0, holding at mould 1.0)
       tl.fromTo(
         '.door-row',
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' },
-        0.65
+        0.70
       )
     }, container)
 

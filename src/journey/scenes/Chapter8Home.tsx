@@ -100,8 +100,8 @@ export function Chapter8Home({ locale = 'en', isTouch = false }: Chapter8HomePro
         start: 'top top',
         end: () => `+=${pinDistance()}`,
         pin: scene,
-        scrub: 1,
-        anticipatePin: 1,
+        scrub: 0.5,
+        anticipatePin: 0,
         onUpdate: (self) => {
           const progress = self.progress
           const idx = Math.min(

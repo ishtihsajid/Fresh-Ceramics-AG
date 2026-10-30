@@ -36,8 +36,8 @@ export function Chapter1Dawn({ locale = 'en', isTouch = false }: Chapter1DawnPro
           start: 'top top',
           end: () => `+=${pinDistance()}`,
           pin: scene,
-          scrub: 1,
-          anticipatePin: 1,
+          scrub: 0.5,
+          anticipatePin: 0,
         },
       })
 
@@ -65,11 +65,11 @@ export function Chapter1Dawn({ locale = 'en', isTouch = false }: Chapter1DawnPro
         0.35
       )
 
-      // Beat 3 (70 - 100%): Three stats figures rise from bottom
+      // Beat 3 (70 - 100%): Three stats figures rise from bottom (finishes at 1.0)
       tl.fromTo(
         statsRef.current,
         { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.3, ease: 'power3.out' },
+        { opacity: 1, y: 0, duration: 0.28, ease: 'power3.out' },
         0.72
       )
     }, container)

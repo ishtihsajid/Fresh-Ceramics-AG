@@ -63,8 +63,8 @@ export function Chapter7Hands({ locale = 'en', isTouch = false }: Chapter7HandsP
           start: 'top top',
           end: () => `+=${pinDistance()}`,
           pin: scene,
-          scrub: 1,
-          anticipatePin: 1,
+          scrub: 0.5,
+          anticipatePin: 0,
         },
       })
 
@@ -132,7 +132,7 @@ export function Chapter7Hands({ locale = 'en', isTouch = false }: Chapter7HandsP
         </div>
 
         {/* Center: 3 Voice Cards from Voices Collection */}
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 my-auto overflow-y-auto max-h-[calc(100dvh-13rem)] py-2 min-h-0">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 my-auto overflow-hidden flex-1 min-h-0 py-2 items-start">
           {VOICES.map((v, i) => (
             <div
               key={v.name}

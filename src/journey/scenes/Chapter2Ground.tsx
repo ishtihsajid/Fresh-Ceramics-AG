@@ -93,23 +93,23 @@ export function Chapter2Ground({ locale = 'en', isTouch = false }: Chapter2Groun
           start: 'top top',
           end: () => `+=${pinDistance()}`,
           pin: scene,
-          scrub: 1,
-          anticipatePin: 1,
+          scrub: 0.5,
+          anticipatePin: 0,
         },
       })
 
-      // Slide 6 panels left (5 panels distance: -83.333%)
+      // Slide 6 panels left: exactly 5 panels distance = -100 * (5/6)%
       tl.to(track, {
-        x: '-83.333%',
+        xPercent: -100 * (PILLARS.length - 1) / PILLARS.length,
         ease: 'none',
         duration: 1,
       })
 
-      // Reveal closing line on the 6th panel
+      // Reveal closing line on the 6th panel (0.85 to 1.0, duration 0.15 keeps total timeline at exactly 1.0)
       tl.fromTo(
         closingRef.current,
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.2, ease: 'power3.out' },
+        { opacity: 1, y: 0, duration: 0.15, ease: 'power3.out' },
         0.85
       )
     }, container)
@@ -135,7 +135,7 @@ export function Chapter2Ground({ locale = 'en', isTouch = false }: Chapter2Groun
           {PILLARS.map((p, idx) => (
             <div
               key={p.num}
-              className={`relative w-screen h-[100dvh] max-h-[100dvh] flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-12 px-6 sm:px-10 md:px-16 ${p.textColor}`}
+              className={`relative w-screen shrink-0 h-[100dvh] max-h-[100dvh] flex flex-col justify-between pt-20 sm:pt-24 pb-8 sm:pb-12 px-6 sm:px-10 md:px-16 ${p.textColor}`}
               style={{ background: p.bg }}
             >
               {/* Header / Chapter Label */}

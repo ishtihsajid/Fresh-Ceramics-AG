@@ -33,8 +33,8 @@ export function Chapter10Horizon({ locale = 'en', isTouch = false }: Chapter10Ho
           start: 'top top',
           end: () => `+=${pinDistance()}`,
           pin: scene,
-          scrub: 1,
-          anticipatePin: 1,
+          scrub: 0.5,
+          anticipatePin: 0,
         },
       })
 
@@ -104,7 +104,7 @@ export function Chapter10Horizon({ locale = 'en', isTouch = false }: Chapter10Ho
         </div>
 
         {/* Center: Vision Statement and Title */}
-        <div className="relative z-10 max-w-4xl mx-auto text-center my-auto px-4 max-h-[calc(100dvh-13rem)] overflow-y-auto py-2 min-h-0">
+        <div className="relative z-10 max-w-4xl mx-auto text-center my-auto px-4 overflow-hidden py-2 min-h-0 flex-1 flex flex-col justify-center">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-light text-paper tracking-tight mb-4">
             {isBn ? (
               <>নান্দনিক জীবনের <span className="font-semibold text-fresh-red">ফ্রেশ প্রভাত</span></>

@@ -63,8 +63,8 @@ export function Chapter5Lighter({ locale = 'en', isTouch = false }: Chapter5Ligh
           start: 'top top',
           end: () => `+=${pinDistance()}`,
           pin: scene,
-          scrub: 1,
-          anticipatePin: 1,
+          scrub: 0.5,
+          anticipatePin: 0,
         },
       })
 
@@ -82,11 +82,11 @@ export function Chapter5Lighter({ locale = 'en', isTouch = false }: Chapter5Ligh
         0.2
       )
 
-      // Closing line reveal
+      // Closing line reveal (finishes at 1.0)
       tl.fromTo(
         '.closing-bar',
         { opacity: 0, y: 25 },
-        { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' },
+        { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' },
         0.75
       )
     }, container)
@@ -124,7 +124,7 @@ export function Chapter5Lighter({ locale = 'en', isTouch = false }: Chapter5Ligh
         </div>
 
         {/* Center Split Screen: Left = Slim Tiles Calculator, Right = Heatproof Tiles */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 my-auto items-stretch overflow-y-auto max-h-[calc(100dvh-13rem)] py-2 min-h-0">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 my-auto items-stretch overflow-hidden flex-1 min-h-0 py-2">
           {/* Left Column: Slim Tiles Calculator */}
           <div className="split-left bg-white p-5 sm:p-6 lg:p-7 border border-stone/15 shadow-sm flex flex-col justify-between">
             <div>
